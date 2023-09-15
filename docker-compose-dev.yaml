@@ -1,0 +1,16 @@
+version: '3'
+
+include:
+  - docker-compose-common.yaml
+
+services:
+  webserver:
+    depends_on: 
+      - mongodb
+    ports:
+      - 3000:3000
+    environment:
+      - MONGO_URL=mongodb://admin:password@mongodb:27017
+    build: .
+    volumes:
+      - ".:/app"
