@@ -42,7 +42,7 @@
     }
 </style>
 <script>
-    (async function init() {
+    const init = async () => {
         const response = await fetch('http://localhost:3000/get-profile');
         console.log("response", response);
         const user = await response.json();
@@ -54,9 +54,9 @@
 
         const cont = document.getElementById('container');
         cont.style.display = 'block';
-    })();
+    }
 
-    async function handleUpdateProfileRequest() {
+    const handleUpdateProfileRequest = async () => {
         const contEdit = document.getElementById('container-edit');
         const cont = document.getElementById('container');
 
@@ -84,7 +84,7 @@
         contEdit.style.display = 'none';
     }
 
-    function updateProfile() {
+     const updateProfile = () => {
         const contEdit = document.getElementById('container-edit');
         const cont = document.getElementById('container');
 
@@ -95,6 +95,9 @@
         cont.style.display = 'none';
         contEdit.style.display = 'block';
     }
+
+    init();
+
 </script>
 <body>
     <div class='container' id='container'>
@@ -109,7 +112,7 @@
         <button class='button' onclick="updateProfile()">Edit Profile</button>
     </div>
     <div class='container' id='container-edit'>
-        <h1>I am</h1>
+        <h1>I am a dog</h1>
         <img src='profile-picture' alt="user-profile">
         <span>Name: </span><label for='input-name'></label><input type="text" id='input-name' value='Anna Smith' />
         <hr />
