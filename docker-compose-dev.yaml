@@ -1,7 +1,8 @@
 version: '3'
 
 include:
-  - docker-compose-common.yaml
+  - docker-compose/common.yaml
+  - docker-compose/kafka.yaml
 
 services:
   webserver:
