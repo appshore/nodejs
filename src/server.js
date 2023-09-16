@@ -68,7 +68,6 @@ app.post("/update-profile", (req, res) => {
 });
 
 app.get("/get-profile", (req, res) => {
-  let response = {};
   MongoClient.connect(mongoUrl, mongoClientOptions, (err, client) => {
     if (err) throw err;
 
@@ -78,10 +77,9 @@ app.get("/get-profile", (req, res) => {
 
     db.collection("users").findOne(myquery, (err, result) => {
       if (err) throw err;
-      response = result;
       client.close();
 
-      res.send(response ? response : {});
+      res.send(result ?? {});
     });
   });
 });
