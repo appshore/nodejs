@@ -1,15 +1,20 @@
-version: '3'
+version: "3"
 
 include:
   - docker-compose/common.yaml
+  - docker-compose/kafka.yaml
 
 services:
   webserver:
-    depends_on: 
+    depends_on:
       - mongodb
     ports:
-     - 3000:3000
+      - 3000:3000
     environment:
-     - MONGO_URL=mongodb://admin:password@mongodb:27017
+      - EXPRESS_PORT=3000
+      - MONGO_URL=mongodb://admin:password@mongodb:27017
+      - MONGO_DATABASE=nodejs
+      - KAFKA_HOST=kafka:9092
+      - KAFKA_TOPIC=FirstTopic
     image: appshore/nodejs:latest
     restart: always
